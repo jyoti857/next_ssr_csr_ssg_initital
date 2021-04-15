@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import Menu from '../components/menu/Menu';
 import Layout from '../components/layout/Layout';
 import { InferGetServerSidePropsType } from 'next';
 import { getAllPosts } from '../lib/db';
-export default function Home(props: InferGetServerSidePropsType<typeof getStaticProps>) {
+export default function HomeSrc(props: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <Layout>
       <Head>
@@ -24,7 +22,7 @@ export default function Home(props: InferGetServerSidePropsType<typeof getStatic
   )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   const posts = await getAllPosts();
   return {props: {posts}}
 }

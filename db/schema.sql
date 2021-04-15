@@ -11,4 +11,4 @@ CREATE TABLE IF NOT EXISTS posts (
 );
 
 INSERT INTO posts (id, title, content)
-VALUES (1, 'Using the Serverless Framework With AWS', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
+VALUES (2, 'Using the Serverless Framework With AWS', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.');
