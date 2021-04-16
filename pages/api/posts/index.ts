@@ -3,7 +3,7 @@
 import { NextApiRequest, NextApiResponse } from "next"
 import mysql from 'mysql';
 
-import db, { getAllPosts } from '../../../lib/db';
+import db, { createPost, getAllPosts } from '../../../lib/db';
 
 
 
@@ -18,12 +18,8 @@ export default async(req: NextApiRequest, res: NextApiResponse) => {
     res.status(201).json(posts);
   }else if(req.method === 'POST'){
     const body: {title: string; content: string} = req.body;
-
-    const newPost = await db.query<mysql.OkPacket>('insert into posts (title, content) values(?, ? )',
-      [body.title, body.content]
-    );
-
-    await db.end();
+    const {title, content} = body;
+    const newPost = await createPost(title, content);
 
     res.statusCode = 201;
     res.json({id: newPost.insertId, title: body.title, content: body.content});
